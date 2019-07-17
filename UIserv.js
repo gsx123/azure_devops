@@ -42,6 +42,7 @@ const compress = require('compression');
 const cookieParser = require('cookie-parser');
 const serveStatic = require('serve-static');
 const sessions = require('client-sessions');
+const logger = require('./util/logger').appLogger;
 
 
 //config express app
@@ -53,7 +54,6 @@ app.use(bodyParser.raw({
     type:'multipart/form-data',
     limit:'2mb',inflate:false}));
     
-
 
 
 process.on('uncaughtException', (err) => {
@@ -70,6 +70,7 @@ app.use(serveStatic(__dirname + '/ui/nova/', {
     maxAge: 0
 }));
 
+logger.debug("server start");
 /**
  * *************************************************************
  * Start UI Server
@@ -81,6 +82,7 @@ if (global.mode.indexOf('azure') === 0) {
     console.log("env.port is "+port);
     http.createServer(app).listen(port, function () {
         console.log('Express server listening on port ' + port);
+        logger.info('Express server listening on port ' + port);
     });
 }
 
