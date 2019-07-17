@@ -33,6 +33,6 @@ steps:
     azureSubscription: 'TM Cloud Study (699e1322-64be-4e6c-bc11-053aa48e1101)'
     appType: 'webAppLinux'
     WebAppName: 'app-uw-cloud-study-devops-monitor'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     RuntimeStack: 'NODE|10.14'
     StartupCommand: 'node UIserv.js azure_dev'
