@@ -80,7 +80,7 @@ if (global.mode.indexOf('azure') === 0) {
     let port = process.env.PORT;
     console.log("env.port is "+port);
     http.createServer(app).listen(port, function () {
-        logger.info('Express server listening on port ' + port);
+        console.log('Express server listening on port ' + port);
     });
 }
 
